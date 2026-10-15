@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahwa's Refreshing & Trendy Cafe - Kasir</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-mug-hot"></i> Zahwa's Refreshing & Trendy Cafe</h1>
+            <p>Pilih minuman favoritmu, tambahkan ke keranjang, dan selesaikan pembayaran.</p>
+        </header>
+
+        <main>
+            <!-- Bagian Menu -->
+            <section class="menu-section">
+                <h2><i class="fa-solid fa-utensils"></i> Daftar Menu Minuman</h2>
+                <div class="menu-grid" id="menuGrid">
+                    <div class="menu-item" data-name="Iced Coffee Latte" data-price="20000">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300" alt="Iced Coffee Latte">
+                        <h3>Iced Coffee Latte</h3>
+                        <p class="price">Rp 20.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Matcha Green Tea" data-price="25000">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=300" alt="Matcha Green Tea">
+                        <h3>Matcha Green Tea</h3>
+                        <p class="price">Rp 25.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Mango Smoothies" data-price="22000">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300" alt="Mango Smoothies">
+                        <h3>Mango Smoothies</h3>
+                        <p class="price">Rp 22.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Chocolate Regal Blend" data-price="23000">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=300" alt="Chocolate Regal Blend">
+                        <h3>Chocolate Regal Blend</h3>
+                        <p class="price">Rp 23.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Thai Tea Original" data-price="18000">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=300" alt="Thai Tea Original">
+                        <h3>Thai Tea Original</h3>
+                        <p class="price">Rp 18.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Brown Sugar Boba Milk" data-price="26000">
+                        <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=300" alt="Brown Sugar Boba Milk">
+                        <h3>Brown Sugar Boba Milk</h3>
+                        <p class="price">Rp 26.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Lemon Squash Refresh" data-price="17000">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300" alt="Lemon Squash Refresh">
+                        <h3>Lemon Squash Refresh</h3>
+                        <p class="price">Rp 17.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                    <div class="menu-item" data-name="Avocado Coffee Float" data-price="28000">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=300" alt="Avocado Coffee Float">
+                        <h3>Avocado Coffee Float</h3>
+                        <p class="price">Rp 28.000</p>
+                        <button type="button">+ Tambah ke Keranjang</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bagian Form Booking & Keranjang -->
+            <section class="booking-section">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Keranjang Pesanan & Pembayaran</h2>
+                
+                <!-- Tabel Keranjang -->
+                <div class="cart-box">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Minuman</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>Subtotal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems">
+                            <tr>
+                                <td colspan="5" class="empty-cart">Keranjang masih kosong. Pilih minuman di atas!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <form id="orderForm">
+                    <div class="form-group margin-top">
+                        <label for="namaPemesan">Nama Pemesan:</label>
+                        <input type="text" id="namaPemesan" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="totalHarga">Total Harga Keseluruhan:</label>
+                        <input type="text" id="totalHarga" readonly value="Rp 0">
+                    </div>
+
+                    <!-- Pilihan Metode Pembayaran -->
+                    <div class="form-group">
+                        <label for="metodePembayaran">Metode Pembayaran:</label>
+                        <select id="metodePembayaran" required>
+                            <option value="">-- Pilih Metode Pembayaran --</option>
+                            <option value="Tunai">Tunai (Cash)</option>
+                            <option value="QRIS">QRIS (GoPay, OVO, Dana, ShopeePay)</option>
+                            <option value="Transfer Bank">Transfer Bank (BCA / Mandiri)</option>
+                        </select>
+                    </div>
+
+                    <!-- Input Khusus Tunai -->
+                    <div class="form-group" id="groupUangBayar" style="display: none;">
+                        <label for="uangBayar">Uang Tunai dari Pembeli (Rp):</label>
+                        <input type="number" id="uangBayar" placeholder="Contoh: 100000">
+                    </div>
+
+                    <!-- Info Khusus QRIS/Transfer -->
+                    <div class="info-box" id="infoPembayaranDigital" style="display: none;">
+                        <p><i class="fa-solid fa-circle-info"></i> <strong>Instruksi:</strong> Silakan scan QR Code atau transfer ke Rekening BCA: <strong>1234-5678-90</strong> (A.N Zahwa's Cafe) sesuai total harga sebelum memproses pesanan.</p>
+                    </div>
+
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-check-to-slot"></i> Proses Pesanan</button>
+                </form>
+            </section>
+
+            <!-- Bagian Struk / Hasil Transaksi -->
+            <section class="result-section" id="resultSection" style="display: none;">
+                <h2><i class="fa-solid fa-receipt"></i> Struk Pembayaran & Bukti Booking</h2>
+                <div id="strukContent" class="struk-box"></div>
+                <button type="button" class="btn-print" onclick="cetakStruk()"><i class="fa-solid fa-print"></i> Cetak Struk</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script JavaScript Terpisah -->
+    <script src="script.js"></script>
+</body>
+</html>
